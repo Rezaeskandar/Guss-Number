@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guss Number</title>
+
+    <style>
+        #container {
+            margin: auto;
+            border: 5px solid green;
+            font-size: 30px;
+            padding: 10px;
+            text-align: center;
+            height: 260px;
+            width: 600px;
+            background-color: blueviolet;
+            color: white;
+        }
+
+        #outputtext {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <p>Guss a number between 1 and 100</p>
+        <p id="outputtext"> Enter a number below</p>
+
+        <input id="Userinput">
+        <button id="enterBotton">Enter</button>
+        <button id="againbutton">Play again</button>
+    </div>
+
+    <script>
+        let enterBotton = document.getElementById('enterBotton');
+        let againbutton = document.getElementById('againbutton');
+        let outputtext = document.getElementById('outputtext');
+
+        let randomNumber = Math.floor(Math.random() * 100);
+
+        function checknumber() {
+
+            let Userinput = document.getElementById('Userinput').value;
+            if (Userinput == randomNumber) {
+                outputtext.innerHTML = "You got right!' 'the number was :" + randomNumber;
+                outputtext.style.color = 'green';
+                outputtext.style.fontSize = 'bold';
+
+            }
+            else if (Userinput > randomNumber && Userinput < 100) {
+                outputtext.innerHTML = 'You guessed too height try again';
+                /*  outputtext.style.color = 'red'; */
+            }
+
+            else if (Userinput < randomNumber && Userinput > 1) {
+                outputtext.innerHTML = 'You guessed too low try again';
+                /* outputtext.style.color = 'red'; */
+            }
+
+            else if (Userinput < 1) {
+                outputtext.innerHTML = 'Higher, it has too be between 1 and 100';
+                /* outputtext.style.color = 'red'; */
+            }
+
+            else if (isNaN(Userinput)) {
+                outputtext.textContent = 'tact is not a number!';
+                /* outputtext.style.color = 'red'; */
+            }
+            else {
+                outputtext.innerHTML = 'Lowe, it has to between 1 and 100';
+            }
+
+
+        }
+
+        enterBotton.addEventListener('click', checknumber);
+        againbutton.addEventListener('click', function () {
+            location.reload();
+
+
+        });
+    </script>
+</body>
+
+</html>
